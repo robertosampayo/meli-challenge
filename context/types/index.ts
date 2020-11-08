@@ -1,0 +1,4 @@
+// Items
+export const SET_ITEMS = 'SET_ITEMS';
+export const SET_CURRENT_ITEM = 'SET_CURRENT_ITEM';
+export const SET_CURRENT_DESCRIPTION = 'SET_CURRENT_DESCRIPTION';

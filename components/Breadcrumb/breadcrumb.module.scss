@@ -1,0 +1,22 @@
+@import '../../styles/_vars';
+@import '../../styles/_utils';
+
+
+.breadcrumb {
+    @include flexCenter();
+    background: transparent;
+    padding: $smallSpace 0;
+    width: 90%;
+    margin: 0 auto;
+    text-align: left;
+    position: relative;
+    left: 0;
+
+    p {
+        align-self: flex-start;
+    }
+
+    @media only screen and (min-width: $desktop) {
+        width: 80%;
+    }
+}
