@@ -1,10 +1,9 @@
 import { Request, Response } from 'express';
-const { serverRuntimeConfig } = require ("../../next.config");
 
 const getItems = async (req:Request, res:Response) => {
 
     try {
-      const response = await fetch(`${serverRuntimeConfig.MELI_API}/sites/MLA/search?q=${req.query.q}`, {
+      const response = await fetch(`${process.env.MELI_API}/sites/MLA/search?q=${req.query.q}`, {
         method: "GET"
 
       });
@@ -24,7 +23,7 @@ const getItems = async (req:Request, res:Response) => {
 
     try {
 
-      const response = await fetch(`${serverRuntimeConfig.MELI_API}/items/${req.params.id}`, {
+      const response = await fetch(`${process.env.MELI_API}/items/${req.params.id}`, {
         method: "GET"
 
       });
@@ -43,7 +42,7 @@ const getItems = async (req:Request, res:Response) => {
   const getDescription = async (req:Request, res:Response) => {
 
     try {
-      const response = await fetch(`${serverRuntimeConfig.MELI_API}/items/${req.params.id}/description`, {
+      const response = await fetch(`${process.env.MELI_API}/items/${req.params.id}/description`, {
         method: "GET"
 
       });
