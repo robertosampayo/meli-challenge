@@ -1,6 +1,5 @@
-
-import { serverRuntimeConfig } from "../../next.config";
 import { Request, Response } from 'express';
+const { serverRuntimeConfig } = require ("../../next.config");
 
 const getItems = async (req:Request, res:Response) => {
 
