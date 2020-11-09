@@ -18,7 +18,11 @@ const ItemReducer = (state, action) => {
                 ...state,
                 description : action.payload
             }
-
+        case types.SET_CATEGORIES:
+            return {
+                ...state,
+                category : action.payload
+            }
 
         default:
             return state;

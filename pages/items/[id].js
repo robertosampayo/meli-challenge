@@ -12,20 +12,18 @@ const Item = () => {
 
   // Obtenemos el context y el State global
   const context = useItem();
-  const { item, description, setCurrentItem, setCurrentDescription } = context;
+  const { item, setCurrentItem } = context;
 
   // Obtenemos el ID del item
   useEffect(() => {
 
     if (id) { getItemInfo(id); }
     
-  }, [id]);
+  }, [id, item]);
 
   // Pasamos el item al State
   const getItemInfo = async (id) => {
-
     setCurrentItem(id);
-    setCurrentDescription(id);
   }
 
   const isMounted = useMounted();
@@ -39,7 +37,7 @@ const Item = () => {
       <Layout>
         {isMounted ? (
 
-          <Detail item={item} description={description} />
+          <Detail item={item}  />
         ):(
             <p>Loading ...</p>
           )

@@ -5,6 +5,8 @@
 .breadcrumb {
     @include flexCenter();
     background: transparent;
+    justify-content: flex-start;
+    flex-direction: row;
     padding: $smallSpace 0;
     width: 90%;
     margin: 0 auto;

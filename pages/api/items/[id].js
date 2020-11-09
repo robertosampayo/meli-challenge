@@ -1,26 +1,59 @@
 
-// /api/item/MLA841301780/
+const { createApolloFetch } = require('apollo-fetch');
+
+// /api/items/MLA841301780/
 const itemHandler = async ({ query: { id } }, res) => {
 
-    try {
+    return new Promise((resolve, reject) => {
 
-      const response = await fetch(`${process.env.MELI_API}/items/${id}`, {
-        method: "GET"
 
-      });
-      
-        const data = await response.json();
-        // Item with id exists
-        if (data) {
-            res.status(200).json(data);
-        } else {
-            res.status(404).json({ message: `Item con id: ${id} no encontrado.` })
-        }
+        const fetch = createApolloFetch({
+          uri: `${process.env.BASE_URL}/api/graphql`,
+        });
+    
+        fetch({
+          query: `
+                query($id: String!){
 
-    } catch (e) {
-      console.log("ERROR IN FETCH: " + e);
-      res.status(500).json({ error: "There's a problem with MELI server. Please try again." });
-    }
+                  author {
+                    name
+                    lastname
+                  },
+                  item(id:$id){
+                        id
+                        title
+                        category_id
+                        price {
+                          currency
+                          amount
+                          decimals
+                        }
+                        sold_quantity
+                        description
+                        free_shipping
+                        picture
+                           
+                    }
+
+                
+                }
+            `,
+            variables : {id: id}
+        }).then(response => {
+
+          res.statusCode = 200
+          res.setHeader('Content-Type', 'application/json');
+          res.end(JSON.stringify(response.data))
+          resolve();
+    
+        }).catch(error => {
+            res.json(error);
+            res.status(405).end();
+            resolve()
+          });
+
+    });
+
 
   }
 

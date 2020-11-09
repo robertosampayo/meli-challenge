@@ -1,9 +1,10 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import SearchBar from '../SearchBar'
 import Breadcrumb from '../Breadcrumb'
 
 
-export default function Layout({children} : {children: React.ReactNode}) {
+export default function Layout({children}) {
+  
 
 
   return (

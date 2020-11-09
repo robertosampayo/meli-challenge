@@ -15,6 +15,7 @@ export const ItemState = ({children}) => {
     const initialState = {
         items: {}, 
         item: {},
+        category: {},
         description: '',
         errorform: false
 
@@ -31,7 +32,7 @@ export const ItemState = ({children}) => {
             const items = await clienteAxios.get(`/api/items?q=${search}`);
             dispatch({
                 type: types.SET_ITEMS,
-                payload: items.data.results
+                payload: items.data.items
             })
 
         } catch (error) {
@@ -43,10 +44,9 @@ export const ItemState = ({children}) => {
         try {
 
             const items = await clienteAxios.get(`/api/items/${id}`);
-            console.log(items);
             dispatch({
                 type: types.SET_CURRENT_ITEM,
-                payload: items.data
+                payload: items.data.item
             })
 
         } catch (error) {
@@ -54,13 +54,13 @@ export const ItemState = ({children}) => {
         }
     }
 
-    const setCurrentDescription = async (id) => {
+    const setCategories = async (id) => {
         try {
-
-            const items = await clienteAxios.get(`/api/items/${id}/description`);
+            
+            const resp = await clienteAxios.get(`/api/categories/${id}`);
             dispatch({
-                type: types.SET_CURRENT_DESCRIPTION,
-                payload: items.data.plain_text
+                type: types.SET_CATEGORIES,
+                payload: resp.data.category || ''
             })
 
         } catch (error) {
@@ -84,10 +84,11 @@ export const ItemState = ({children}) => {
                     items: state.items,
                     item: state.item,
                     description: state.description,
+                    category: state.category,
                     errorform: state.errorform,
                     setItems,
                     setCurrentItem,
-                    setCurrentDescription
+                    setCategories
                     // mostrarError,
                     
                 }}

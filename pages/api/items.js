@@ -1,23 +1,54 @@
+const { createApolloFetch } = require('apollo-fetch');
+
+// /api/items?q=remeras
+const handler = async ({ query: { q } }, res) => {
 
 
-// /api/items
-const handler = async (req, res) => {
+    return new Promise((resolve, reject) => {
 
 
-    try {
-        const response = await fetch(`${process.env.MELI_API}/sites/MLA/search?q=${req.query.q}`, {
-          method: "GET"
-  
+        const fetch = createApolloFetch({
+          uri: `${process.env.BASE_URL}/api/graphql`,
         });
-        
-        const data = await response.json();
-        return res.status(response.status).json(data);
-  
-  
-      } catch (e) {
-        console.log("ERROR IN FETCH: " + e);
-        return res.status(500).json({ error: "There's a problem with MELI server. Please try again." });
-      }
+    
+        fetch({
+          query: `
+                query($q: String!){
+                    author {
+                        name
+                        lastname
+                    },
+                    items(q:$q){
+                        id
+                        title
+                        price {
+                            currency
+                            amount
+                            decimals
+                        }
+                        picture
+                        condition
+                        free_shipping
+                        
+                    }
+                
+                }
+            `,
+            variables : {q: q, limit:5}
+        }).then(response => {
+          res.statusCode = 200
+          res.setHeader('Content-Type', 'application/json');
+          res.setHeader('Cache-Control', 'max-age=180000');
+          res.end(JSON.stringify(response.data))
+          resolve();
+    
+        }).catch(error => {
+            res.json(error);
+            res.status(405).end();
+            resolve()
+          });
+
+    });
 
 
 }

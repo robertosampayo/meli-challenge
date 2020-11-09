@@ -22,5 +22,5 @@
     "resolveJsonModule": true
   },
   "exclude": ["dist", ".next", "out", "next.config.js"],
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/_app.js", "context/items/itemContext.js"]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/_app.js", "context/items/itemContext.js", "components/Layout/index.js"]
 }

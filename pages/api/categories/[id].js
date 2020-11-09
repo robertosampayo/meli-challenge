@@ -1,7 +1,8 @@
-const { createApolloFetch } = require('apollo-fetch');  
 
-// /api/items/MLA841301780/description
-const descriptionHandler = async ({ query: { id } }, res) => {
+const { createApolloFetch } = require('apollo-fetch');
+
+// /api/items/categories/MLA429731
+const categoryHandler = async ({ query: { id } }, res) => {
 
     return new Promise((resolve, reject) => {
 
@@ -13,8 +14,14 @@ const descriptionHandler = async ({ query: { id } }, res) => {
         fetch({
           query: `
                 query($id: String! ){
-                    description( id:$id ){
-                    plain_text
+                    category( id:$id ){
+                    id
+                    name
+                    permalink
+                    path_from_root {
+                        id
+                        name
+                    }
                     }
                 
                 }
@@ -35,6 +42,7 @@ const descriptionHandler = async ({ query: { id } }, res) => {
 
     });
 
-}
 
-export default descriptionHandler
+  }
+
+export default categoryHandler;

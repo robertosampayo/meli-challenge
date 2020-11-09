@@ -38,9 +38,14 @@
             align-self: center;
             justify-self: center;
 
+            @media only screen and (min-width: $desktop) {
+                width: $imageSizeDetail;
+                height: $imageSizeDetail;
+            }
+
             @media only screen and (min-width: $bigScreen) {
                 width: $imageSizeDetail;
-                height: auto;
+                height: $imageSizeDetail;
             }
         
         }
@@ -51,10 +56,16 @@
             justify-content: center;
             padding: 0 $space;
 
+            @media only screen and (min-width: $desktop) {
+                justify-content: flex-start;
+                align-items: center;
+                padding: $space $space 0 0;
+            }
+
             @media only screen and (min-width: $bigScreen) {
                 justify-content: flex-start;
                 align-items: center;
-                padding: $space $space 0;
+                padding: $space $space 0 0;
             }
 
             p {

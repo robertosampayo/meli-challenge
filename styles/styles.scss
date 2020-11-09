@@ -81,3 +81,36 @@ a {
   color: initial;
   text-decoration: none;
 }
+
+.image-default {
+  width: 180px;
+  height: 180px;
+  background: $white;
+  @media only screen and (min-width: $desktop) {
+    width: 680px;
+    height: 680px;
+  }
+  @media only screen and (min-width: $bigScreen) {
+    width: 680px;
+    height: 680px;
+  }
+}
+
+.image-default-product {
+  width: 180px;
+  height: 180px;
+  background: $white;
+
+}
+
+.spinner {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  padding: 100px 0 0;
+  grid-template-rows: 0.1fr 0.1fr;
+  text-align: center;
+  gap: 1rem;
+}
