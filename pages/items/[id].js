@@ -5,6 +5,8 @@ import Layout from '../../components/Layout'
 import { Helmet } from "react-helmet";
 import { useItem } from '../../context/items/itemState';
 import useMounted from '../../utils/useMounted'
+import Breadcrumb from '../../components/Breadcrumb'
+
 
 const Item = () => {
   const router = useRouter();
@@ -19,7 +21,7 @@ const Item = () => {
 
     if (id) { getItemInfo(id); }
     
-  }, [id, item]);
+  }, [id]);
 
   // Pasamos el item al State
   const getItemInfo = async (id) => {
@@ -29,22 +31,32 @@ const Item = () => {
   const isMounted = useMounted();
 
   return (
-    <>
-      <Helmet>
-        <title>Mercado Libre - {`${item.title}`}</title>
-        <meta name="description" content={`Item ${item.title}`} />
-      </Helmet>
-      <Layout>
-        {isMounted ? (
 
-          <Detail item={item}  />
-        ):(
-            <p>Loading ...</p>
-          )
-        }
-      </Layout>
     
-    </>
+    
+    <>
+      
+          <Helmet>
+            <title>Mercado Libre - {`${item && item.title?item.title:''}`}</title>
+            <meta name="description" content={`Item ${item && item.title?item.title:''}`} />
+          </Helmet>
+          <Layout>
+          {item && item.title &&
+            <>
+            {isMounted ? (
+              <>
+              <Breadcrumb />
+              <Detail item={item}  />
+              </>
+            ):(
+                <p>Loading ...</p>
+              )
+            }
+            </>
+          }
+          </Layout>
+   </>
+    
   );
 }
 

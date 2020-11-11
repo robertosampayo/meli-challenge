@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import SearchBar from '../SearchBar'
-import Breadcrumb from '../Breadcrumb'
+import PropTypes from 'prop-types'
 
 
 export default function Layout({children}) {
@@ -11,8 +11,11 @@ export default function Layout({children}) {
     <>
 
         <SearchBar />
-        <Breadcrumb />
         {children}
     </>
   )
+}
+
+Layout.propTypes = {
+  children: PropTypes.node
 }

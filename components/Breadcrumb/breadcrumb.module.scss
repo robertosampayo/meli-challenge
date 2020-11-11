@@ -3,22 +3,29 @@
 
 
 .breadcrumb {
-    @include flexCenter();
-    background: transparent;
-    justify-content: flex-start;
-    flex-direction: row;
-    padding: $smallSpace 0;
-    width: 90%;
-    margin: 0 auto;
-    text-align: left;
-    position: relative;
-    left: 0;
+    div {
 
-    p {
-        align-self: flex-start;
+
+
+        @include flexCenter();
+        background: transparent;
+        justify-content: flex-start;
+        flex-direction: row;
+        padding: $smallSpace 0;
+        width: auto;
+        margin: 0;
+        text-align: left;
+        position: relative;
+        left: 0;
+
+        p {
+            align-self: flex-start;
+        }
     }
-
     @media only screen and (min-width: $desktop) {
         width: 80%;
+        margin: 0 auto;
+        display: flex;
     }
+
 }

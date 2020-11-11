@@ -3,12 +3,11 @@ import styles from './products.module.scss'
 import Product from './product';
 import { useItem } from '../../context/items/itemState';
 import { useRouter } from 'next/router'
+import Breadcrumb from '../Breadcrumb'
+
 
 export default function Products() {
 
-    const [product, searchProduct] = useState({
-        name : ''
-    });
 
     const router = useRouter()
     const { q } = router.query
@@ -23,18 +22,25 @@ export default function Products() {
         setItems(q);
       }
 
+
     }, [q, items])
 
     return (
-      <div className={styles.products}>
+      <>
+      <Breadcrumb />
 
-        {items && items.length > 0 &&
-          <>
-            {items.slice(0,4).map((item,k) => (
+
+      <div className={styles.products}>
+        {items && items?.result && Object.keys(items.result).length > 0 ?
+          (<>
+            {items.result.map((item,k) => (
                <Product key={`prod-${k}`} item={item} />
             ))}
           </>
+          ) :
+          (   <></>   )
         }
       </div>
+      </>
     )
 }

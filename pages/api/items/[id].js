@@ -14,11 +14,6 @@ const itemHandler = async ({ query: { id } }, res) => {
         fetch({
           query: `
                 query($id: String!){
-
-                  author {
-                    name
-                    lastname
-                  },
                   item(id:$id){
                         id
                         title
@@ -29,24 +24,33 @@ const itemHandler = async ({ query: { id } }, res) => {
                           decimals
                         }
                         sold_quantity
-                        description
-                        free_shipping
-                        picture
-                           
-                    }
-
+                      description
+                      free_shipping
+                      picture
+                      
+                
+                      
+                      
+                  },
+                  author {
+                    name
+                    lastname
+                  }
                 
                 }
             `,
             variables : {id: id}
-        }).then(response => {
+        }).then(async response => {
 
-          res.statusCode = 200
-          res.setHeader('Content-Type', 'application/json');
-          res.end(JSON.stringify(response.data))
-          resolve();
-    
-        }).catch(error => {
+            res.statusCode = 200
+            res.setHeader('Content-Type', 'application/json');
+            res.setHeader('Cache-Control', 'max-age=180000');
+            res.end(JSON.stringify(response.data))
+            resolve();
+          
+        })
+                
+        .catch(error => {
             res.json(error);
             res.status(405).end();
             resolve()

@@ -25,7 +25,7 @@ export const typeDefs = gql`
     type Item {
         id: String
         title: String
-        category_id: String!
+        category_id: String
         price: [Price]
         picture: String
         condition: String
@@ -33,18 +33,15 @@ export const typeDefs = gql`
         sold_quantity: Int
         description: String
 
+    }
 
-
+    type Categories {
+        path_from_root: [Category]
     }
 
     type Description {
         plain_text: String
     }
-
-
-
-
-
 
     type Query {
         author: Author!
@@ -52,6 +49,7 @@ export const typeDefs = gql`
         items(q: String!): [Item]!
         description(id: String!): Description!
         category(id: String!): Category!
+        categories(q: String!): Categories!
         
     }
 `

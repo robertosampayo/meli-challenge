@@ -18,23 +18,30 @@ const handler = async ({ query: { q } }, res) => {
                         name
                         lastname
                     },
-                    items(q:$q){
-                        id
-                        title
-                        price {
-                            currency
-                            amount
-                            decimals
-                        }
-                        picture
-                        condition
-                        free_shipping
-                        
-                    }
+                    categories(q:$q) {
+                        path_from_root {
+                            id
+                            name
+                          }
+                      },
+                      items(q:$q){
+                          id
+                          title
+                          price {
+                              currency
+                              amount
+                              decimals
+                          }
+                          picture
+                          condition
+                          free_shipping
+                          category_id
+                  
+                    },
                 
                 }
             `,
-            variables : {q: q, limit:5}
+            variables : {q: q}
         }).then(response => {
           res.statusCode = 200
           res.setHeader('Content-Type', 'application/json');

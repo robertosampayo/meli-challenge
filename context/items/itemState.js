@@ -3,8 +3,8 @@ import itemReducer from './itemReducer'
 import * as types from '../types'
 import clienteAxios from '../../config/axios'
 
-const ItemStateContext = createContext()
-const ItemDispatchContext = createContext()
+export const ItemStateContext = createContext()
+export const ItemDispatchContext = createContext()
 
 
 
@@ -29,11 +29,45 @@ export const ItemState = ({children}) => {
     const setItems = async (search) => {
         try {
 
-            const items = await clienteAxios.get(`/api/items?q=${search}`);
-            dispatch({
-                type: types.SET_ITEMS,
-                payload: items.data.items
-            })
+            const result = await clienteAxios.get(`/api/items?q=${search}`).then(async(resp) =>{
+                return await resp
+            }).then((itemsResponse) => {
+
+                let items = {}
+
+                if (itemsResponse.data && 
+                    itemsResponse.data.categories && 
+                    itemsResponse.data.categories.path_from_root &&
+                    Object.keys(itemsResponse.data.items).length > 0) {
+
+                    items = {
+    
+                        result :  itemsResponse.data.items.slice(0,4) || {},
+                        categories :  itemsResponse.data.categories.path_from_root || {}
+                    }
+
+                } else {
+
+                    items = {
+        
+                        result :  itemsResponse?.data?.items?.slice(0,4) || {},
+                        categories :  {}
+                    }
+
+                }
+
+
+
+    
+    
+    
+                dispatch({
+                    type: types.SET_ITEMS,
+                    payload: items
+                })
+
+            });
+      
 
         } catch (error) {
             console.log(error);
@@ -43,11 +77,22 @@ export const ItemState = ({children}) => {
     const setCurrentItem = async (id) => {
         try {
 
-            const items = await clienteAxios.get(`/api/items/${id}`);
-            dispatch({
-                type: types.SET_CURRENT_ITEM,
-                payload: items.data.item
-            })
+            const resp = await clienteAxios.get(`/api/items/${id}`);
+
+            if (resp.data && resp.data.item) {
+
+                if(resp.data.item.category_id) {
+                    // Cargamos las categorias para el breadcrumb
+                    setCategories(resp.data.item.category_id);
+                }
+                
+                dispatch({
+                    type: types.SET_CURRENT_ITEM,
+                    payload: resp.data.item || {}
+                })
+            }
+
+
 
         } catch (error) {
             console.log(error);

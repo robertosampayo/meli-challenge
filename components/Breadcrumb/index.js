@@ -1,49 +1,42 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './breadcrumb.module.scss'
 import { useItem } from '../../context/items/itemState';
 import {VscChevronRight} from 'react-icons/vsc'
-import useSWR from 'swr'
-import { useRouter } from 'next/router'
+
 
 export default function Breadcrumb() {
 
-  const router = useRouter();
-  const { id } = router.query;
-
+  // Obtenemos el context y el State global
   const context = useItem();
-  const { item, setCategories, category, setCurrentItem } = context;
+  const { category } = context;
 
+  const [state, setState] = useState({
+    categories: ''
+  })
 
-
-
-
-
-  const fetcher = (...args) => fetch(...args).then((res) => res.json());
-  const { data: result, error } = useSWR(`https://api.mercadolibre.com/categories/${item.category_id}`, fetcher)
-
-
-  // useEffect(() => {
-  //   if (item.category_id) {
-  //     setCategories(item.category_id);
-
-  //   }
-  // }, [item])
-
-
+  // Escuchamos por algun cambio en las categorias
+  useEffect(() => {
+    if (category && Object.keys(category).length > 0) {
+      setState({
+        ...state,
+        categories: category.path_from_root
+      })
+    }
+  }, [category])
 
 
   return (
-        <div className={styles.breadcrumb}>
-          {result && result.path_from_root &&
-              result.path_from_root.map((bread, i) => (
-                <>
+        <div data-testid="breadcrumb-category" className={styles.breadcrumb}>
+          {state.categories && Object.keys(state.categories).length > 0 &&
+              state.categories.map((bread, i) => (
+                <div key={`bread-${i}`}>
                   <p>{bread.name} </p>
-                  {result.path_from_root.length === (i+1)?
+                  {state.categories.length === (i+1)?
                   ''
                   :
                   <VscChevronRight/>
                   }
-                </>
+                </div>
               ))               
           
 

@@ -1,4 +1,5 @@
 import axios from "axios";
+// import { response } from "express";
 import fetch from "isomorphic-fetch";
 
 
@@ -29,7 +30,6 @@ export const resolvers = {
             return [item, description]
             
         }).then( ([item, description]) => {
-
 
             const price = item.price || 0;
             const decimals = (price % 1).toFixed(2) || 0;
@@ -66,6 +66,9 @@ export const resolvers = {
 
 
 
+        }).catch((error) => {
+          if (error) throw new Error(error);
+          console.log(error);
         });
 
 
@@ -84,25 +87,46 @@ export const resolvers = {
     },
     items: async (_, args) => {
         try {
-          const items = await axios.get(`${process.env.MELI_API}/sites/MLA/search?q=${args.q}`);
 
 
-          return items.data.results.map((item) => ({
-            "id": item.id || "",
-            "title": item.title || "",
-            "price": [
-                {
-                    "currency":item.currency_id || "",
-                    "amount":parseInt(item.price,10) || 0,
-                    "decimals":(item.price % 1).toFixed(2) || 0
 
-                }
-            ],
-            "picture": item.thumbnail || "",
-            "condition": item.condition || "",
-            "free_shipping": item.shipping.free_shipping,
+          return await fetch(`${process.env.MELI_API}/sites/MLA/search?q=${args.q}`).then(async(resp)=>{
+            const respuesta= await resp.json();
+            
+            return respuesta?.results ? respuesta?.results : {}
+                  
+          }).then((results)=> {
+            // console.log(Object.keys(results).length);
+            if (results && Object.keys(results).length > 0) {
 
-          }));
+              return results.map((item) => ({
+                "id": item.id || "",
+                "title": item.title || "",
+                "price": [
+                    {
+                        "currency":item.currency_id || "",
+                        "amount":parseInt(item.price,10) || 0,
+                        "decimals":(item.price % 1).toFixed(2) || 0
+    
+                    }
+                ],
+                "picture": item.thumbnail || "",
+                "condition": item.condition || "",
+                "free_shipping": item.shipping.free_shipping,
+                "category_id": item.category_id
+              }));
+
+            }else {
+              return {}
+            }
+  
+            
+          })
+
+
+
+
+          
 
 
   
@@ -158,5 +182,31 @@ export const resolvers = {
           throw error;
         }
       },
+      categories: async (_, args) => {
+        try {
+            return await fetch(`${process.env.MELI_API}/sites/MLA/search?q=${args.q}`).then(async(resp)=>{
+              const respuesta= await resp.json();
+              return respuesta.filters[0].values[0].path_from_root
+            }).then((path)=> {
+                return {                      
+            
+    
+                    "path_from_root": path || [],  
+    
+                
+                }
+            })
+
+
+
+
+  
+
+  
+        } catch (error) {
+          throw error;
+        }
+      },
+
   }
 };

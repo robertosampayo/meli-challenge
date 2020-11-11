@@ -1,10 +1,11 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React from 'react'
 import styles from './detail.module.scss'
 import ImageDefault from '../Utils/imgDefaultDetail'
 import Spinner from '../Utils/spinner'
-
+import PropTypes from 'prop-types'
 
 export default function Detail({item={}}) {
+
 
 
   return (
@@ -49,3 +50,6 @@ export default function Detail({item={}}) {
   )
 }
 
+Detail.propTypes = {
+  item: PropTypes.object.isRequired,
+}
