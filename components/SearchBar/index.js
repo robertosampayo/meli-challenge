@@ -35,7 +35,7 @@ export default function SearchBar() {
   
 
   return (
-    <div className={styles.nav}>
+    <div className={styles.nav} data-testid='search' data-cy="search">
         <div className={styles.search__bar__container}>
             <img src='/images/logo.png' />
             <form
@@ -50,7 +50,9 @@ export default function SearchBar() {
                 />
 
                 <button 
-                    type='submit'                    
+                    type='submit'   
+                    data-testid='search-submit'    
+                    data-cy="search-submit"             
                 >
                     <CgSearch />
                 </button>

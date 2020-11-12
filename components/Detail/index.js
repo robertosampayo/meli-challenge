@@ -3,12 +3,16 @@ import styles from './detail.module.scss'
 import ImageDefault from '../Utils/imgDefaultDetail'
 import Spinner from '../Utils/spinner'
 import PropTypes from 'prop-types'
+import Breadcrumb from '../Breadcrumb'
+
 
 export default function Detail({item={}}) {
 
 
 
   return (
+    <>
+    <Breadcrumb />
     <div className={styles.detail}>
       
         {item.picture ? (
@@ -47,6 +51,7 @@ export default function Detail({item={}}) {
         )
        }
     </div>
+    </>
   )
 }
 

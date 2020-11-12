@@ -4,7 +4,8 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "test": "jest"
+    "test": "jest",
+    "cypress:open":"node_modules/.bin/cypress open"
   },
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.5",

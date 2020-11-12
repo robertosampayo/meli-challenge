@@ -5,7 +5,7 @@ import Layout from '../../components/Layout'
 import { Helmet } from "react-helmet";
 import { useItem } from '../../context/items/itemState';
 import useMounted from '../../utils/useMounted'
-import Breadcrumb from '../../components/Breadcrumb'
+
 
 
 const Item = () => {
@@ -14,7 +14,7 @@ const Item = () => {
 
   // Obtenemos el context y el State global
   const context = useItem();
-  const { item, setCurrentItem } = context;
+  const { item, setCurrentItem, category } = context;
 
   // Obtenemos el ID del item
   useEffect(() => {
@@ -41,11 +41,11 @@ const Item = () => {
             <meta name="description" content={`Item ${item && item.title?item.title:''}`} />
           </Helmet>
           <Layout>
-          {item && item.title &&
+          {item && item.title && category &&
             <>
             {isMounted ? (
               <>
-              <Breadcrumb />
+              
               <Detail item={item}  />
               </>
             ):(

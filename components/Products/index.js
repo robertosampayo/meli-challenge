@@ -13,7 +13,7 @@ export default function Products() {
     const { q } = router.query
     // Extrae los Items del State Inicial
     const context = useItem();
-    const { items, setItems } = context;
+    const { items, setItems, category } = context;
 
 
 
@@ -27,10 +27,11 @@ export default function Products() {
 
     return (
       <>
+      
       <Breadcrumb />
+      
 
-
-      <div className={styles.products}>
+      <div className={styles.products} data-cy="products">
         {items && items?.result && Object.keys(items.result).length > 0 ?
           (<>
             {items.result.map((item,k) => (

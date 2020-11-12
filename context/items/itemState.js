@@ -46,6 +46,12 @@ export const ItemState = ({children}) => {
                         categories :  itemsResponse.data.categories.path_from_root || {}
                     }
 
+                    dispatch({
+                        type: types.SET_CATEGORIES,
+                        payload: itemsResponse.data.categories|| {}
+                    })
+        
+
                 } else {
 
                     items = {
@@ -53,6 +59,12 @@ export const ItemState = ({children}) => {
                         result :  itemsResponse?.data?.items?.slice(0,4) || {},
                         categories :  {}
                     }
+
+                    dispatch({
+                        type: types.SET_CATEGORIES,
+                        payload: {}
+                    })
+        
 
                 }
 

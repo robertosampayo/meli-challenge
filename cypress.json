@@ -1,0 +1,11 @@
+{
+
+    "env": {
+        "search1": "remeras",
+        "search2": "telefonos",
+        "searchError": "bolso",
+        "searchError2": "234#\"7+`'$#",
+        "baseUrl": "http://localhost:3000"
+
+    }
+}
