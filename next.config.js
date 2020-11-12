@@ -4,7 +4,7 @@ const path = require('path')
 const secrets = require("docker-secrets-nodejs");
 
 
-const getSecret = key => {
+const getSecret = (key) => {
   return secrets.get(key) || process.env[key] || undefined;
 };
 
@@ -18,5 +18,8 @@ module.exports = {
   sassOptions: {
     includePaths: [path.join(__dirname, 'styles')],
   },
-  serverRuntimeConfig
+  serverRuntimeConfig,
+  typescript: {
+    ignoreBuildErrors: true,
+  },
 }

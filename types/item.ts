@@ -1,21 +1,37 @@
 
 type ItemType= {
-    author: { name: string, lastname: string}
-    item: {
-        id: string,
-        title: string,
-        price: {
-            currency: string,
-            amount: number,
-            decimals: number
-        },
-        picture: string,
-        conditions: string,
-        free_shipping: boolean,
-        sold_quantity: number,
-        description: string
+
+    data: {
+
+        author: { name: string, lastname: string},
+        categories: {
+            path_from_root: {
+                id:string
+                name:string
+              }
+          },
+        item: {
+            id: string,
+            title: string,
+            price: 
+            {
+                currency: string,
+                amount: number,
+                decimals: number
+            },
+            picture: string,
+            conditions: string,
+            free_shipping: boolean,
+            description: string,
+            category_id: string,
+            city: string
+    
+        }
 
     }
+
+
+
 
   
   }

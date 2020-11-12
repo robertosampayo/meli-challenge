@@ -1,10 +1,13 @@
 const { createApolloFetch } = require('apollo-fetch');
+import { NextApiRequest, NextApiResponse } from 'next'
+import ItemType from '../../types/item'
+
 
 // /api/items?q=remeras
-const handler = async ({ query: { q } }, res) => {
+const handler = async (req:NextApiRequest, res:NextApiResponse) => {
 
 
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve, _reject) => {
 
 
         const fetch = createApolloFetch({
@@ -42,15 +45,15 @@ const handler = async ({ query: { q } }, res) => {
                 
                 }
             `,
-            variables : {q: q}
-        }).then(response => {
+            variables : {q: req.query.q}
+        }).then((response:ItemType) => {
           res.statusCode = 200
           res.setHeader('Content-Type', 'application/json');
           res.setHeader('Cache-Control', 'max-age=180000');
           res.end(JSON.stringify(response.data))
           resolve();
     
-        }).catch(error => {
+        }).catch((error:NextApiResponse) => {
             res.json(error);
             res.status(405).end();
             resolve()

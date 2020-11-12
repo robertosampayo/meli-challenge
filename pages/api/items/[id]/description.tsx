@@ -1,9 +1,10 @@
 const { createApolloFetch } = require('apollo-fetch');  
+import ItemType from '../../../../types/item';
+import { NextApiRequest, NextApiResponse } from 'next';
 
-// /api/items/MLA841301780/description
-const descriptionHandler = async ({ query: { id } }, res) => {
+const descriptionHandler = async (req:NextApiRequest, res:NextApiResponse) => {
 
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve, _reject) => {
 
 
         const fetch = createApolloFetch({
@@ -19,15 +20,15 @@ const descriptionHandler = async ({ query: { id } }, res) => {
                 
                 }
             `,
-            variables : {id: id}
-        }).then(response => {
+            variables : {id: req.query.id}
+        }).then((response:ItemType) => {
 
           res.statusCode = 200
           res.setHeader('Content-Type', 'application/json');
           res.end(JSON.stringify(response.data))
           resolve();
     
-        }).catch(error => {
+        }).catch((error:NextApiResponse) => {
             res.json(error);
             res.status(405).end();
             resolve()

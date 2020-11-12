@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Detail from '../../components/Detail'
 import Layout from '../../components/Layout'
@@ -10,7 +10,7 @@ import ErrorPage from '../../components/ErrorPage'
 
 const Item = () => {
   const router = useRouter();
-  const { id } = router.query;
+  const { query } = router;
 
   // Obtenemos el context y el State global
   const context = useItem();
@@ -20,9 +20,9 @@ const Item = () => {
 
   // Obtenemos el ID del item
   useEffect(() => {
-    if (id) { getItemInfo(id); }
+    if (query.id) { getItemInfo(query.id.toString()); }
     
-  }, [id]);
+  }, [query.id]);
 
   useEffect(() => {
     if(item && item?.error) {
@@ -34,7 +34,7 @@ const Item = () => {
   }, [item])
 
   // Pasamos el item al State
-  const getItemInfo = async (id) => {
+  const getItemInfo = async (id:String) => {
     setCurrentItem(id);
   }
 

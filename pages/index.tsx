@@ -1,4 +1,3 @@
-import Products from '../components/Products'
 import Layout from '../components/Layout'
 import { Helmet } from "react-helmet";
 

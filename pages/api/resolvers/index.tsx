@@ -1,9 +1,32 @@
+import { IResolvers } from "apollo-server-micro";
 import axios from "axios";
-// import { response } from "express";
 import fetch from "isomorphic-fetch";
 
+interface itemAPI {
 
-export const resolvers = {
+  
+  id: string,
+  title: string,
+  price: string,
+  currency_id: string,
+  thumbnail: string,
+  condition: string,
+  free_shipping: boolean,
+  category_id:string,
+  city_name: string
+  shipping: {
+    free_shipping: boolean
+  },
+  address: {
+    city_name: string
+  }
+
+
+}
+
+
+
+export const resolvers:IResolvers = {
 
   Query: {
     author: (_,) => {
@@ -96,17 +119,16 @@ export const resolvers = {
             return respuesta?.results ? respuesta?.results : {}
                   
           }).then((results)=> {
-            // console.log(Object.keys(results).length);
             if (results && Object.keys(results).length > 0) {
 
-              return results.map((item) => ({
+              return results.map((item:itemAPI) => ({
                 "id": item.id || "",
                 "title": item.title || "",
                 "price": [
                     {
                         "currency":item.currency_id || "",
                         "amount":parseInt(item.price,10) || 0,
-                        "decimals":(item.price % 1).toFixed(2) || 0
+                        "decimals":(parseInt(item.price,10) % 1).toFixed(2) || 0
     
                     }
                 ],
