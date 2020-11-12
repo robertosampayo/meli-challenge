@@ -36,6 +36,7 @@ const handler = async ({ query: { q } }, res) => {
                           condition
                           free_shipping
                           category_id
+                          city
                   
                     },
                 

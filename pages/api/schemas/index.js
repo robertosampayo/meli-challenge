@@ -32,6 +32,7 @@ export const typeDefs = gql`
         free_shipping: Boolean
         sold_quantity: Int
         description: String
+        city: String
 
     }
 

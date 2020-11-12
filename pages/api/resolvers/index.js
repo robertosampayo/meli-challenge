@@ -113,7 +113,8 @@ export const resolvers = {
                 "picture": item.thumbnail || "",
                 "condition": item.condition || "",
                 "free_shipping": item.shipping.free_shipping,
-                "category_id": item.category_id
+                "category_id": item.category_id,
+                "city": item.address.city_name
               }));
 
             }else {

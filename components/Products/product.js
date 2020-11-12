@@ -20,7 +20,7 @@ export default function Product({item}) {
                         <h2>{item && item.title ? item.title: ''}</h2>
                     </div>
                     <div>
-                        <span>{item && item.address && item.address.city_name ? item.address.city_name: ''}</span>
+                        <span>{item && item.city ? item.city: ''}</span>
 
                     </div>
 
