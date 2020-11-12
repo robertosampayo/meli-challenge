@@ -5,7 +5,7 @@
     "build": "next build",
     "start": "next start",
     "test": "jest",
-    "cypress:open":"node_modules/.bin/cypress open"
+    "cypress:open": "node_modules/.bin/cypress open"
   },
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.5",
@@ -20,6 +20,7 @@
     "body-parser": "^1.19.0",
     "cross-env": "^7.0.2",
     "css-loader": "^5.0.1",
+    "cypress": "^5.6.0",
     "docker-secrets-nodejs": "^1.0.5",
     "dotenv": "^8.2.0",
     "graphql": "^15.4.0",
@@ -34,7 +35,7 @@
     "react-dom": "^16.7.0",
     "react-helmet": "^6.1.0",
     "react-icons": "^3.11.0",
-    "react-spinners": "^0.9.0",
+    "react-loader-spinner": "^3.1.14",
     "sass": "1.26.3",
     "sass-loader": "^10.0.5",
     "swr": "^0.3.8"

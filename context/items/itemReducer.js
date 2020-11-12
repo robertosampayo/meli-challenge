@@ -6,12 +6,14 @@ const ItemReducer = (state, action) => {
         case types.SET_ITEMS:
             return {
                 ...state,
-                items : action.payload
+                items : action.payload,
+                item : {}
             }
         case types.SET_CURRENT_ITEM:
             return {
                 ...state,
-                item : action.payload
+                item : action.payload,
+                items : {}
             }
         case types.SET_CURRENT_DESCRIPTION:
             return {

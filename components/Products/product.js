@@ -12,7 +12,7 @@ export default function Product({item}) {
   return (
 
         <div className={styles.product} >
-            <Link href={item && item.id? `/items/?id=${item.id}`:'#'} as={item && item.id?`/items/${item.id}`:'#'} >
+            <Link href={item && item.id? `/items/${item.id}`:'#'}  >
                 <a>
                     <img data-testid="product-image" src={item && item.picture? item.picture:<imageDefault />} />
                     <div className={styles.products__details}>

@@ -1,10 +1,10 @@
-import Products from '../components/Products'
-import Layout from '../components/Layout'
+import Products from '../../components/Products'
+import Layout from '../../components/Layout'
 import { Helmet } from "react-helmet";
 
 
 
-export default function Home() {
+export default function Items() {
   return (
     <>
 
@@ -15,6 +15,7 @@ export default function Home() {
 
 
       <Layout > 
+          <Products />    
       </Layout>
 
 

@@ -29,7 +29,7 @@ export default function SearchBar() {
         if (product) {
             
             setItems(product);
-            router.push(`/items/search?q=${product}`);
+            router.push(`/items?search=${product}`);
         }
     }
   
@@ -37,7 +37,13 @@ export default function SearchBar() {
   return (
     <div className={styles.nav} data-testid='search' data-cy="search">
         <div className={styles.search__bar__container}>
-            <img src='/images/logo.png' />
+            <Link href='/'>
+            
+                <a>
+                    <img src='/images/logo.png' />
+
+                </a>
+            </Link>
             <form
             onSubmit={onSubmit}>
                 <input 

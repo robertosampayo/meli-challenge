@@ -18,14 +18,5 @@ module.exports = {
   sassOptions: {
     includePaths: [path.join(__dirname, 'styles')],
   },
-  serverRuntimeConfig,
-  async redirects() {
-    return [
-      {
-        source: '/items',
-        destination: '/',
-        permanent: true,
-      },
-    ]
-  },
+  serverRuntimeConfig
 }

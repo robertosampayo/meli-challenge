@@ -23,6 +23,10 @@
         height: 35px;
         width: 90%;
         position: relative;
+
+        a {
+            height: 100%;
+        }
         
         form {
             @include flexCenter(row);

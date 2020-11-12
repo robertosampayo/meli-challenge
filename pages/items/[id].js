@@ -5,7 +5,7 @@ import Layout from '../../components/Layout'
 import { Helmet } from "react-helmet";
 import { useItem } from '../../context/items/itemState';
 import useMounted from '../../utils/useMounted'
-
+import ErrorPage from '../../components/ErrorPage'
 
 
 const Item = () => {
@@ -16,12 +16,22 @@ const Item = () => {
   const context = useItem();
   const { item, setCurrentItem, category } = context;
 
+  const [error, setError] = useState('')
+
   // Obtenemos el ID del item
   useEffect(() => {
-
     if (id) { getItemInfo(id); }
     
   }, [id]);
+
+  useEffect(() => {
+    if(item && item?.error) {
+      setError(item.error);
+    }
+
+
+
+  }, [item])
 
   // Pasamos el item al State
   const getItemInfo = async (id) => {
@@ -41,19 +51,26 @@ const Item = () => {
             <meta name="description" content={`Item ${item && item.title?item.title:''}`} />
           </Helmet>
           <Layout>
-          {item && item.title && category &&
-            <>
-            {isMounted ? (
-              <>
-              
-              <Detail item={item}  />
+
+            {error ?
+              <ErrorPage message={error} />
+                :
+              <> 
+                  {item && item.title && category &&
+                    <>
+                    {isMounted ? (
+                      <>
+                      
+                      <Detail item={item}  />
+                      </>
+                    ):(
+                        <p>Loading ...</p>
+                      )
+                    }
+                    </>
+                  }
               </>
-            ):(
-                <p>Loading ...</p>
-              )
             }
-            </>
-          }
           </Layout>
    </>
     

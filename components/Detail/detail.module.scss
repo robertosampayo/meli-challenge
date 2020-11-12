@@ -3,12 +3,15 @@
 
 .detail {
     display: grid;
-    grid-template-rows: 1fr 0.5fr;
+    grid-template-rows: 0.1fr 0.5fr;
     gap: $space;
     background: $white;
     width: 90%;
     margin: 0 auto ($space *2);
     border-radius: $border;
+    justify-content: center;
+    align-items: center;
+    position: relative;
 
     @media only screen and (min-width: $desktop) {
         width: 80%;
@@ -23,29 +26,46 @@
 
     .detail__product {
         display: grid;
-        grid-template-rows: 1fr 1fr;     
+        grid-template-rows: 0.1fr 0.8fr;     
         grid-template-columns: 1fr;   
-        margin: 32px 0 0;
+        margin: $space 0 0;
+        gap: $smallSpace;
 
         @media only screen and (min-width: $desktop) {
-            grid-template-columns: 1.2fr 1fr;
+            grid-template-columns: 1.2fr 0.6fr;
             grid-template-rows: 1fr;
+        }
+
+
+        @media all and (device-width: 768px) and (device-height: 1024px) and (orientation:portrait) {
+            grid-template-rows: 1.2fr 0.1fr;
+            grid-template-columns: 1fr;
+            width: 100%;
+            position: relative;
+            margin: 0 auto;
+        }
+        @media all and (device-width: 1024px) and (device-height: 768px) and (orientation:landscape) {
+            grid-template-rows: 1fr;
+            grid-template-columns: 1.2fr 1fr;
+            width: 100%;
+            position: relative;
+            margin: 0 auto;
         }
 
         img {
             width: $imageSize;
-            height: $imageSize;
+            height: auto;
             align-self: center;
             justify-self: center;
 
             @media only screen and (min-width: $desktop) {
-                width: $imageSizeDetail;
-                height: $imageSizeDetail;
+                width: auto;
+                height: auto;
             }
 
             @media only screen and (min-width: $bigScreen) {
-                width: $imageSizeDetail;
-                height: $imageSizeDetail;
+                width: auto;
+                height: auto;
             }
         
         }
@@ -54,18 +74,29 @@
             @include flexCenter();
             align-items: flex-start;
             justify-content: center;
-            padding: 0 $space;
+            padding: 0 $smallSpace;
 
             @media only screen and (min-width: $desktop) {
                 justify-content: flex-start;
-                align-items: center;
+                align-items: flex-start;
                 padding: $space $space 0 0;
             }
 
             @media only screen and (min-width: $bigScreen) {
                 justify-content: flex-start;
-                align-items: center;
+                align-items: flex-start;
                 padding: $space $space 0 0;
+            }
+
+            @media all and (device-width: 768px) and (device-height: 1024px) and (orientation:portrait) {
+                justify-content: flex-start;
+                align-items: flex-start;
+                padding: 0 32px;
+            }
+            @media all and (device-width: 1024px) and (device-height: 768px) and (orientation:landscape) {
+                justify-content: flex-start;
+                align-items: flex-start;
+                padding: 0 32px;
             }
 
             p {
@@ -101,18 +132,50 @@
 
     .detail__description {
 
-        padding: 0 $space;
+        // padding: 0 $space;
+        @media only screen and (min-width: $desktop) {
+            padding: 0 $space $space $space;
+            display: flex;
+            flex-direction: column;
+        }
+        @media all and (device-width: 768px) and (device-height: 1024px) and (orientation:portrait) {
+            padding: 0;
+        }
+        @media all and (device-width: 1024px) and (device-height: 768px) and (orientation:landscape) {
+            padding: 16px;
+        }
         h2 {
             font-size: 28px;
             font-weight: 400;
+            padding: $smallSpace $smallSpace $smallSpace;
+            @media all and (device-width: 768px) and (device-height: 1024px) and (orientation:portrait) {
+                width: 100%;
+                align-self: center;
+            }
+            @media all and (device-width: 1024px) and (device-height: 768px) and (orientation:landscape) {
+                width: 100%;
+                align-self: center;
+            }
         }
 
         p {
-            color: $grayLight;
-            padding: $space 0 $space;
+            color: #999999;
+            padding: 0 $smallSpace;
             text-align: left;
             letter-spacing: 0.3px;
             line-height: 18px;
+
+            @media all and (device-width: 768px) and (device-height: 1024px) and (orientation:portrait) {
+                width: 100%;
+                align-self: center;
+            }
+            @media all and (device-width: 1024px) and (device-height: 768px) and (orientation:landscape) {
+                width: 100%;
+                align-self: center;
+            }
+
+
+
 
             @media only screen and (min-width: $bigScreen) {
                 width: 70%;

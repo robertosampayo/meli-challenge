@@ -56,8 +56,9 @@ export const ItemState = ({children}) => {
 
                     items = {
         
-                        result :  itemsResponse?.data?.items?.slice(0,4) || {},
-                        categories :  {}
+                        result :  {},
+                        categories :  {},
+                        error: 'No se encontraron productos en la busqueda'
                     }
 
                     dispatch({
@@ -101,6 +102,19 @@ export const ItemState = ({children}) => {
                 dispatch({
                     type: types.SET_CURRENT_ITEM,
                     payload: resp.data.item || {}
+                })
+                
+
+
+            }else {
+
+                const item  = {
+                    error: 'No se encontro el producto'
+                }
+
+                dispatch({
+                    type: types.SET_CURRENT_ITEM,
+                    payload:item
                 })
             }
 

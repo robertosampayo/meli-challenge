@@ -16,12 +16,23 @@ export default function Breadcrumb() {
 
   // Escuchamos por algun cambio en las categorias
   useEffect(() => {
+
+    // cargar la categoria en el bread
     if (category && Object.keys(category).length > 0) {
       setState({
         ...state,
         categories: category.path_from_root
       })
     }
+
+    // Si no categorias disponible borrarlo del bread
+    if(!category || Object.keys(category).length === 0){
+      setState({
+        ...state,
+        categories: {}
+      })
+    }
+
   }, [category])
 
 
