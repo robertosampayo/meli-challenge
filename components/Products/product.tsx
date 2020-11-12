@@ -1,11 +1,15 @@
 import React, { useState, useContext, useEffect } from 'react'
 import styles from './products.module.scss'
 import Link from 'next/link'
-import imageDefault from '../Utils/imgDefaultProducts'
-import PropTypes from 'prop-types'
+import ImageDefault from '../Utils/imgDefaultProducts'
+import ItemType from '../../types/item'
 
+type ProductProps = {
+    item: ItemType['data']['item'],
+    key: string
+}
 
-export default function Product({item}) {
+const Product:React.FC<ProductProps> = ({item}) => {
 
 
 
@@ -14,9 +18,15 @@ export default function Product({item}) {
         <div className={styles.product} >
             <Link href={item && item.id? `/items/${item.id}`:'#'}  >
                 <a>
-                    <img data-testid="product-image" src={item && item.picture? item.picture:<imageDefault />} />
+                    {item && item.picture ?
+
+                        <img data-testid="product-image" src={item.picture} />
+                        :
+                        <ImageDefault />
+                    }
+           
                     <div className={styles.products__details}>
-                        <h1>$ {item && item.price ? (parseFloat(item.price[0].amount) + parseFloat(item.price[0].decimals)).toFixed(2): ''}</h1>
+                        <h1>$ {item && item.price ? (item.price[0].amount + item.price[0].decimals).toFixed(2): ''}</h1>
                         <h2>{item && item.title ? item.title: ''}</h2>
                     </div>
                     <div>
@@ -31,6 +41,5 @@ export default function Product({item}) {
   )
 }
 
-Product.propTypes = {
-    item: PropTypes.object.isRequired,
-  }
+export default Product
+

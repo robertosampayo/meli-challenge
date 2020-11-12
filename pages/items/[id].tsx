@@ -6,7 +6,7 @@ import { Helmet } from "react-helmet";
 import { useItem } from '../../context/items/itemState';
 import useMounted from '../../utils/useMounted'
 import ErrorPage from '../../components/ErrorPage'
-
+import ItemType from '../../types/item'
 
 const Item = () => {
   const router = useRouter();

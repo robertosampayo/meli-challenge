@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import styles from './breadcrumb.module.scss'
 import { useItem } from '../../context/items/itemState';
 import {VscChevronRight} from 'react-icons/vsc'
-
+import ItemType from '../../types/item'
 
 export default function Breadcrumb() {
 
@@ -11,7 +11,7 @@ export default function Breadcrumb() {
   const { category } = context;
 
   const [state, setState] = useState({
-    categories: ''
+    categories: []
   })
 
   // Escuchamos por algun cambio en las categorias
@@ -29,7 +29,7 @@ export default function Breadcrumb() {
     if(!category || Object.keys(category).length === 0){
       setState({
         ...state,
-        categories: {}
+        categories: []
       })
     }
 
@@ -39,10 +39,10 @@ export default function Breadcrumb() {
   return (
         <div data-testid="breadcrumb-category" className={styles.breadcrumb}>
           {state.categories && Object.keys(state.categories).length > 0 &&
-              state.categories.map((bread, i) => (
+              state.categories.map((bread:ItemType["data"]["categories"]["path_from_root"], i:number) => (
                 <div key={`bread-${i}`}>
                   <p>{bread.name} </p>
-                  {state.categories.length === (i+1)?
+                  {Object.keys(state.categories).length === (i+1)?
                   ''
                   :
                   <VscChevronRight/>

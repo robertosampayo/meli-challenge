@@ -1,9 +1,8 @@
-import React, {useEffect, useState} from 'react'
 import SearchBar from '../SearchBar'
 import PropTypes from 'prop-types'
 
 
-export default function Layout({children}) {
+export default function Layout({children}:{children: React.ReactNode}) {
   
 
 

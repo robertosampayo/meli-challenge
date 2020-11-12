@@ -1,7 +1,6 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState} from 'react'
 import styles from './search-bar.module.scss'
 import { CgSearch } from 'react-icons/cg';
-import clienteAxios from '../../config/axios'
 import { useItem } from '../../context/items/itemState';
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -17,13 +16,13 @@ export default function SearchBar() {
 
 
     //  Lee los valores del formulario
-    const handleChange = e => {
+    const handleChange: React.ChangeEventHandler<HTMLInputElement>  = e => {
         searchProduct(e.target.value);
     }
 
 
 
-    const onSubmit = e => {
+    const onSubmit = (e: React.SyntheticEvent): void =>  {
         e.preventDefault();
         // Inserta los productos de la busqueda en el state
         if (product) {

@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import styles from './products.module.scss'
 import Product from './product';
 import { useItem } from '../../context/items/itemState';
@@ -6,15 +6,17 @@ import { useRouter } from 'next/router'
 import Breadcrumb from '../Breadcrumb'
 import Loading from '../Loader'
 import ErrorPage from '../ErrorPage'
+import ItemType from '../../types/item'
 
-export default function Products() {
+
+const Products = () => {
 
 
     const router = useRouter()
     const { search } = router.query
     // Extrae los Items del State Inicial
     const context = useItem();
-    const { items, setItems, category } = context;
+    const { items, setItems } = context;
 
 
 
@@ -40,7 +42,7 @@ export default function Products() {
           <>
           {items && items?.result && Object.keys(items.result).length > 0 ?
             (<>
-              {items.result.map((item,k) => (
+              {items.result.map((item:ItemType['data']['item'],k:number) => (
                 <Product key={`prod-${k}`} item={item} />
               ))}
             </>
@@ -54,3 +56,5 @@ export default function Products() {
       </>
     )
 }
+
+export default Products

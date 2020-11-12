@@ -13,18 +13,22 @@ type ItemType= {
         item: {
             id: string,
             title: string,
-            price: 
-            {
-                currency: string,
-                amount: number,
-                decimals: number
-            },
+            price: [
+
+                {
+                    currency: string,
+                    amount: number,
+                    decimals: number
+                }
+            ]
+            ,
             picture: string,
             conditions: string,
             free_shipping: boolean,
             description: string,
             category_id: string,
-            city: string
+            city: string,
+            sold_quantity:number
     
         }
 
