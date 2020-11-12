@@ -26,7 +26,7 @@ const Detail: React.FC<DetailProps> = (item) => {
           <Loading />
         
         }
-        <div className={styles.item}>
+        <div className={styles.detail}>
           
             {item.item && item.item.picture ? (
 
