@@ -70,3 +70,7 @@ npm run test
 ## Deploy 😎 🚀
 
 Puedes ver la aplicacion funcionando en produccion mediante este link: [MeliApp](https://meli-challenge.vercel.app/) .
+Gracias por haber llegado hasta aca 🙏🏼 Happy Coding, Happy Life!
+
+A Great character once said:
+> It's not who you are underneath, but what you do that defines you
