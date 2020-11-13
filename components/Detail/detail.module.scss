@@ -2,15 +2,11 @@
 @import '../../styles/_utils';
 
 .detail {
-    display: grid;
-    grid-template-rows: 0.1fr 0.5fr;
-    gap: $space;
-    background: $white;
+
+    background: #FFFFFF;
     width: 90%;
-    margin: 0 auto ($space *2);
-    border-radius: $border;
-    justify-content: center;
-    align-items: center;
+    margin: 0 auto 64px;
+    border-radius: 4px;
     position: relative;
 
     @media only screen and (min-width: $desktop) {
@@ -23,16 +19,19 @@
         gap: $space * 2;
     }
 
+    .detail__container {
+        width: 100%;
+        height: auto;
+    }
 
     .detail__product {
         display: grid;
         grid-template-rows: 0.1fr 0.8fr;     
         grid-template-columns: 1fr;   
-        margin: $space 0 0;
         gap: $smallSpace;
 
         @media only screen and (min-width: $desktop) {
-            grid-template-columns: 1.2fr 0.6fr;
+            grid-template-columns: 1fr 0.6fr;
             grid-template-rows: 1fr;
         }
 

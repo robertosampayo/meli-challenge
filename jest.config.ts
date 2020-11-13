@@ -4,7 +4,7 @@ module.exports = {
     '!**/*.d.ts',
     '!**/node_modules/**',
   ],
-  setupFilesAfterEnv: ['<rootDir>/setupTests.ts', '<rootDir>/enzyme.js'],
+  setupFilesAfterEnv: ['<rootDir>/setupTests.ts', '<rootDir>/enzyme.ts'],
   testPathIgnorePatterns: ['/node_modules/', '/.next/'],
   transform: {
     '^.+\\.(js|jsx|ts|tsx)$': '<rootDir>/node_modules/babel-jest',
@@ -19,3 +19,5 @@ module.exports = {
     "\\.(css|less|scss|sass)$": "identity-obj-proxy"
   },
 }
+
+export {}

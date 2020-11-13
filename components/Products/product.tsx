@@ -26,7 +26,20 @@ const Product:React.FC<ProductProps> = ({item}) => {
                     }
            
                     <div className={styles.products__details}>
-                        <h1>$ {item && item.price ? (item.price[0].amount + item.price[0].decimals).toFixed(2): ''}</h1>
+                        <div>
+                            <h1>$ {item && item.price ? (item.price[0].amount + item.price[0].decimals).toFixed(2): ''}</h1>
+                            {item && item.free_shipping &&
+                            <>
+                                {item.free_shipping ?
+
+                                    <span><img src='/images/shipping.png' /></span>
+                                    :
+                                    <></>
+                                }
+                            
+                            </>
+                            }
+                        </div>
                         <h2>{item && item.title ? item.title: ''}</h2>
                     </div>
                     <div className={styles.products__city}>

@@ -1,5 +1,5 @@
 
-type ItemType= {
+type ItemType = {
 
     data: {
 

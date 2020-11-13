@@ -31,7 +31,6 @@ describe('<SearchBar />',  () => {
             
         )
 
-        console.log(wrapper.debug());
 
         expect(wrapper).toBeTruthy();
 

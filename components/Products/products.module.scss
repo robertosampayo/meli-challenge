@@ -75,13 +75,27 @@
             .products__details {
                 
                 width: 100%;
-                h1 {
-                    margin: 0 0 $space;
-                    font-weight: 500;
-                }
-    
+                
                 h2 {
                     font-weight: 400;
+                }
+                
+                div {
+                    display: flex;
+                    flex-direction: row;
+
+                    h1 {
+                        margin: 0 $smallSpace $space 0;
+                        font-weight: 500;
+                    }
+
+                    img {
+                        width: 30px;
+                        height: 30px;
+                        border: 0;
+                        box-shadow: 0 0 black;
+                    }
+
                 }
             }
 

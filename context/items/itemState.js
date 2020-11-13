@@ -17,8 +17,6 @@ export const ItemState = ({children}) => {
         item: {},
         category: {},
         description: '',
-        errorform: false
-
     }
 
     // Dispatch para ejecutar las acciones
@@ -139,12 +137,6 @@ export const ItemState = ({children}) => {
         }
     }
 
-    // const mostrarError = () => {
-    //     dispatch({
-    //         type: types.VALIDAR_FORMULARIO
-    //     })
-    // }
-
 
     return (
     
@@ -160,7 +152,7 @@ export const ItemState = ({children}) => {
                     setItems,
                     setCurrentItem,
                     setCategories
-                    // mostrarError,
+
                     
                 }}
             >

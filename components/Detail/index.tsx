@@ -30,7 +30,7 @@ const Detail: React.FC<DetailProps> = (item) => {
           
             {item.item && item.item.picture ? (
 
-              <>
+              <div className={styles.detail__container} >
                 <div className={styles.detail__product}>
                     {item.item.picture?
                       <img src={item.item.picture}  />
@@ -57,7 +57,7 @@ const Detail: React.FC<DetailProps> = (item) => {
                     <h2>Descripción del producto</h2>
                     <p>{item.item.description? item.item.description:'Producto sin Descripción'}</p>
                 </div>
-              </>
+              </div>
 
           ):(
               <Loading />
