@@ -1,31 +1,75 @@
-# Example app with next-sass
+# Web app de productos utilizando la API de 
+# Mercado Libre 🙌
 
-This example demonstrates how to use Next.js' built-in Global Sass/Scss imports and Component-Level Sass/Scss modules support.
+[MeLi API](https://api.mercadolibre.com/sites/MLA)
 
-## Deploy your own
+Esta aplicacion consta de tres componentes principales: la caja de busqueda, la visualizacion de resultados y la descripcion del del detalle del producto.
 
-Deploy the example using [Vercel](https://vercel.com):
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/vercel/next.js/tree/canary/examples/with-next-sass)
+## Correr la aplicacion en local 🐱‍💻
 
-## How to use
-
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
+Ejecuta npm install para instalar las dependencias
 
 ```bash
-npx create-next-app --example with-next-sass with-next-sass-app
-# or
-yarn create next-app --example with-next-sass with-next-sass-app
-```
 
-Run production build with:
+npm install
+
+```
+y luego 
 
 ```bash
-npm run build
-npm run start
-# or
-yarn build
-yarn start
+
+npm run dev
+
 ```
 
-Deploy it to the cloud with [Vercel](https://vercel.com/import?filter=next.js&utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+# Descripcion de lo realizado ✌
+
+## Problema
+
+Para el desafio se solicito realizar los tres componentes mencionados anteriormente en donde se podria ingresar un producto a buscar, al enviar el formulario deberia navegar a los resultados de la busqueda, visualizando solo 4 productos. Luego al hacer click sobre uno de ellos deberia navegar a la vista del detalle, ademas si se ingresa dado un id de producto, deberia poder ingresar directamente a la vista de su detalle.
+
+## Solucion 
+
+Para el *cliente* de la aplicacion se utilizo React junto con Nextjs el cual cubre bastante bien el uso de SSR y manejo de rutas dinamicas, se hizo uso de API Context como estado global, TypeScript para validar y controlar errores dentro de los componentes de la aplicacion, para el SEO se utilizo React Helmet y por ultimo para los estilos SASS y mosule.css, de esta manera la aplicacion solo renderiza los estilos necesarios y solo los que se estan presentando en el momento.
+
+* Cliente
+  * React 💕
+  * Typesctipt 🌹
+  * SASS ✨
+  * React Helmet (SEO) 😉
+
+Para el *servidor* se utilizo API Routes que brinda una solucion elegante para la construccion de una API, este nos permite manejar los distintos endpoints solicitados dentro de la aplicacion, ademas se utilizo *graphql* para la manipulacion de la API haciendo conexion entre el API de MeLi y nuestro servidor
+
+* Servidor
+  * API Routes (NextJs)  🤞
+  * Node 🤷‍♂️
+  * Graphql + Apollo 🐱‍🚀
+  
+* Testing
+  * Jest 👍
+  * Enzyme 👌
+  * Cypress (e2e) 👏🏼
+
+Para el testing se utilizo Jest con Enzyme para las pruebas unitarias y Cypress para las pruebas End to End, que ademas son completamente automatizadas, para correrlas utiliza:
+
+```bash
+
+npm run cypress:open
+
+```
+y para las pruebas unitarias:
+
+```bash
+
+npm run test
+
+```
+
+## Deploy 😎 🚀
+
+Puedes ver la aplicacion funcionando en produccion mediante este link: [MeliApp](https://meli-challenge.vercel.app/) .
+Gracias por haber llegado hasta aca 🙏🏼 Happy Coding, Happy Life!
+
+A Great character once said:
+> It's not who you are underneath, but what you do that defines you
