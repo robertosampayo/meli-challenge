@@ -31,12 +31,13 @@ Para el desafio se solicito realizar los tres componentes mencionados anteriorme
 
 ## Solucion 
 
-Para el *cliente* de la aplicacion se utilizo React junto con Nextjs el cual cubre bastante bien el uso de SSR y manejo de rutas dinamicas, se hizo uso de API Context como estado global, TypeScript para validar y controlar errores dentro de los componentes de la aplicacion y por ultimo para los estilos se utilzo SASS y mosule.css, de esta manera la aplicacion solo renderiza los estilos necesarios y solo los que se estan presentando en el momento.
+Para el *cliente* de la aplicacion se utilizo React junto con Nextjs el cual cubre bastante bien el uso de SSR y manejo de rutas dinamicas, se hizo uso de API Context como estado global, TypeScript para validar y controlar errores dentro de los componentes de la aplicacion, para el SEO se utilizo React Helmet y por ultimo para los estilos SASS y mosule.css, de esta manera la aplicacion solo renderiza los estilos necesarios y solo los que se estan presentando en el momento.
 
 * Cliente
   * React 💕
   * Typesctipt 🌹
   * SASS ✨
+  * React Helmet (SEO) 😉
 
 Para el *servidor* se utilizo API Routes que brinda una solucion elegante para la construccion de una API, este nos permite manejar los distintos endpoints solicitados dentro de la aplicacion, ademas se utilizo *graphql* para la manipulacion de la API haciendo conexion entre el API de MeLi y nuestro servidor
 
@@ -47,6 +48,9 @@ Para el *servidor* se utilizo API Routes que brinda una solucion elegante para l
   * SSR (NextJs) 🐱‍🏍
   
 * Testing
+ * Jest 👍
+ * Enzyme 👌
+ * Cypress (e2e) 👏🏼
 
 Para el testing se utilizo Jest con Enzyme para las pruebas unitarias y Cypress para las pruebas End to End, que ademas son completamente automatizadas, para correrlas utiliza:
 
@@ -63,6 +67,6 @@ npm run test
 
 ```
 
-## Deploy 😎
+## Deploy 😎 🚀
 
 Puedes ver la aplicacion funcionando en produccion mediante este link: [MeliApp](https://meli-challenge.vercel.app/) .
