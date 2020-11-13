@@ -47,9 +47,9 @@ Para el *servidor* se utilizo API Routes que brinda una solucion elegante para l
   * Graphql + Apollo 🐱‍🚀
   
 * Testing
- * Jest 👍
- * Enzyme 👌
- * Cypress (e2e) 👏🏼
+  * Jest 👍
+  * Enzyme 👌
+  * Cypress (e2e) 👏🏼
 
 Para el testing se utilizo Jest con Enzyme para las pruebas unitarias y Cypress para las pruebas End to End, que ademas son completamente automatizadas, para correrlas utiliza:
 
