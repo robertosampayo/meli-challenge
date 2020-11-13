@@ -41,11 +41,17 @@ export default function Breadcrumb() {
           {state.categories && Object.keys(state.categories).length > 0 &&
               state.categories.map((bread:ItemType["data"]["categories"]["path_from_root"], i:number) => (
                 <div key={`bread-${i}`}>
-                  <p>{bread.name} </p>
+                  
                   {Object.keys(state.categories).length === (i+1)?
-                  ''
+                  <>
+                    <p className={styles.strong}>{bread.name} </p>
+                  </>
+                  
                   :
+                  <>
+                  <p>{bread.name} </p>
                   <VscChevronRight/>
+                  </>
                   }
                 </div>
               ))               

@@ -18,8 +18,8 @@
         gap: $space * 2;
     }
 
-    @media only screen and (min-width: $desktop) {
-        width: 80%;
+    @media only screen and (min-width: $bigScreen) {
+        width: 70%;
         gap: $space * 2;
     }
 
@@ -124,6 +124,8 @@
                 border: 0;
                 background: $blue;
                 color: $white;
+                cursor:pointer;
+                
             }
         }
 

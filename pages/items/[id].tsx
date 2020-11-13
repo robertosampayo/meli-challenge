@@ -6,7 +6,6 @@ import { Helmet } from "react-helmet";
 import { useItem } from '../../context/items/itemState';
 import useMounted from '../../utils/useMounted'
 import ErrorPage from '../../components/ErrorPage'
-import ItemType from '../../types/item'
 import Loading from '../../components/Loader'
 
 

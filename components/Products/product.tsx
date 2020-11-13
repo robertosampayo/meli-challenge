@@ -29,7 +29,7 @@ const Product:React.FC<ProductProps> = ({item}) => {
                         <h1>$ {item && item.price ? (item.price[0].amount + item.price[0].decimals).toFixed(2): ''}</h1>
                         <h2>{item && item.title ? item.title: ''}</h2>
                     </div>
-                    <div>
+                    <div className={styles.products__city}>
                         <span>{item && item.city ? item.city: ''}</span>
 
                     </div>

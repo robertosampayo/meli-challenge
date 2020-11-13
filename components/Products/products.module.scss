@@ -9,6 +9,14 @@
     margin: 0 auto $space*2;
     border-radius: $border;
 
+    @media only screen and (min-width: $desktop) {
+        width: 80%;
+    }
+
+    @media only screen and (min-width: $bigScreen) {
+        width: 70%;
+    }
+
     .alert__message {
         display: flex;
         position: absolute;
@@ -34,12 +42,12 @@
     
     
             @media only screen and (min-width: $desktop) {
-                grid-template-columns: 0.1fr 1fr 0.5fr;
+                grid-template-columns: 0.1fr 0.8fr 0.5fr;
                 grid-template-rows: 1fr;
                 width: 100%;
             }
             @media only screen and (min-width: $bigScreen) {
-                grid-template-columns: 0.1fr 1fr 0.5fr;
+                grid-template-columns: 0.1fr 0.8fr 0.5fr;
                 grid-template-rows: 1fr;
                 width: 100%;
             }
@@ -49,16 +57,24 @@
                 height: $imageSize;
                 border-radius: $border;
                 justify-self: center;
+                box-shadow: 0 1px 1px 0 rgba(0,0,0,.1), 0 -1px 2px 0 rgba(0,0,0,.1);
             }
             
     
             div {
                 justify-self: flex-start;
             }
+
+            .products__city {
+                width: 100%;
+                justify-self: center;
+                text-align: center;
+                padding: 16px 0 0;
+            }
             
             .products__details {
                 
-                width: 70%;
+                width: 100%;
                 h1 {
                     margin: 0 0 $space;
                     font-weight: 500;
@@ -75,7 +91,5 @@
 
     }
 
-    @media only screen and (min-width: $desktop) {
-        width: 80%;
-    }
+
 }

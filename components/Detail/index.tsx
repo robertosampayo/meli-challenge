@@ -26,7 +26,7 @@ const Detail: React.FC<DetailProps> = (item) => {
           <Loading />
         
         }
-        <div className={styles.detail}>
+        <div className={styles.detail} data-cy='detail'>
           
             {item.item && item.item.picture ? (
 
@@ -38,7 +38,7 @@ const Detail: React.FC<DetailProps> = (item) => {
                       <ImageDefault />
                     }
                     
-                    <div className={styles.detail__product__text}>
+                    <div className={styles.detail__product__text} data-cy='datail-text'>
                         <p>Nuevo - {item.item.sold_quantity?item.item.sold_quantity:'0'} vendidos</p>
                         <h2>{item.item.title? item.item.title: ''}</h2>
 
@@ -53,7 +53,7 @@ const Detail: React.FC<DetailProps> = (item) => {
                         <button>Comprar</button>
                     </div>
                 </div>
-                <div className={styles.detail__description}>
+                <div className={styles.detail__description} data-cy='detail-description'>
                     <h2>Descripción del producto</h2>
                     <p>{item.item.description? item.item.description:'Producto sin Descripción'}</p>
                 </div>
