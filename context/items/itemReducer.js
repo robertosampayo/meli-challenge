@@ -8,19 +8,15 @@ const ItemReducer = (state, action) => {
             return {
                 ...state,
                 items : action.payload,
-                item : {}
+                // item : {}
             }
         case types.SET_CURRENT_ITEM:
             return {
                 ...state,
                 item : action.payload,
-                items : {}
+                // items : {}
             }
-        case types.SET_CURRENT_DESCRIPTION:
-            return {
-                ...state,
-                description : action.payload
-            }
+
         case types.SET_CATEGORIES:
             return {
                 ...state,

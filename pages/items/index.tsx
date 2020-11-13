@@ -1,10 +1,14 @@
 import Products from '../../components/Products'
 import Layout from '../../components/Layout'
 import { Helmet } from "react-helmet";
+import { GetServerSideProps,InferGetServerSidePropsType } from 'next'
 
 
+const Items = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
 
-export default function Items() {
+
+  const { items } = props
+
   return (
     <>
 
@@ -14,12 +18,47 @@ export default function Items() {
       </Helmet>
 
 
-      <Layout > 
-          <Products />    
+      <Layout categories={
+        items && 
+        items?.categories && 
+        items?.categories?.path_from_root ?
+        
+          items.categories?.path_from_root
+          :
+          []
+      }> 
+          <Products items={items} />    
       </Layout>
 
 
 
     </>
   )
+}
+
+export default Items;
+
+export const getServerSideProps:GetServerSideProps = async ({query}) => {
+
+  let dataItems = {};
+
+
+  try {
+
+      const resp = await fetch(`${process.env.BASE_URL}/api/items?q=${query.search}`);
+      dataItems = await resp.json()
+      
+
+      console.log(dataItems);
+
+
+  } catch (error) {
+      console.log(error);
+  }  
+
+  return {
+    props: { 
+      items: dataItems,
+    }
+  }
 }

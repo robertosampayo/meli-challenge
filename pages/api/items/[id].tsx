@@ -5,8 +5,6 @@ import { NextApiRequest, NextApiResponse } from 'next'
 
 
 
-
-
 // /api/items/MLA841301780/
 const itemHandler = async (req:NextApiRequest, res:NextApiResponse) => {
 

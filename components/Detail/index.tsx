@@ -21,7 +21,7 @@ const Detail: React.FC<DetailProps> = (item) => {
   return (
     
     <>         
-        <Breadcrumb />
+        
         {loading &&
           <Loading />
         
