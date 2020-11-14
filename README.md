@@ -71,7 +71,7 @@ npm run test
 ## Deploy 😎 🚀
 
 Puedes ver la aplicacion funcionando en produccion mediante este link: [MeliApp](https://meli-challenge.vercel.app/) .
-Puedes ver ejemplo de consumo de los endpints aqui:
+Puedes ver ejemplo de los endpints solicitados aqui:
  * [Detalle de un producto](https://meli-challenge.vercel.app/api/items/MLA775860909)
  * [Busqueda de producto](https://meli-challenge.vercel.app/api/items?q=iphone)
  
