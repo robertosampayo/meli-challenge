@@ -37,6 +37,7 @@ Para el *cliente* de la aplicacion se utilizo React junto con Nextjs el cual cub
   * React 💕
   * Typesctipt 🌹
   * SASS ✨
+  * Context API
   * React Helmet (SEO) 😉
 
 Para el *servidor* se utilizo API Routes que brinda una solucion elegante para la construccion de una API, este nos permite manejar los distintos endpoints solicitados dentro de la aplicacion, ademas se utilizo *graphql* para la manipulacion de la API haciendo conexion entre el API de MeLi y nuestro servidor
