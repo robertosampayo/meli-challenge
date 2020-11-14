@@ -6,6 +6,7 @@ import  { ItemState } from '../context/items/itemState'
 import Router from 'next/router';
 import NProgress from 'nprogress';
 
+NProgress.configure({ showSpinner: false });
 Router.events.on('routeChangeStart', (url) => {
   NProgress.start()
 })

@@ -2,12 +2,13 @@ import Products from '../../components/Products'
 import Layout from '../../components/Layout'
 import { Helmet } from "react-helmet";
 import { GetServerSideProps,InferGetServerSidePropsType } from 'next'
-
+import ErrorPage from '../../components/ErrorPage'
 
 const Items = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
 
 
   const { items } = props
+
 
   return (
     <>
@@ -26,8 +27,17 @@ const Items = (props: InferGetServerSidePropsType<typeof getServerSideProps>) =>
           items.categories?.path_from_root
           :
           []
-      }> 
-          <Products items={items} />    
+      }>
+        <>
+          {items === null &&
+            <ErrorPage message='No se encontraron productos en la busqueda' />
+          }
+
+          {items && items.items &&
+
+              <Products items={items} />    
+          }
+        </>
       </Layout>
 
 
@@ -40,7 +50,9 @@ export default Items;
 
 export const getServerSideProps:GetServerSideProps = async ({query}) => {
 
-  let dataItems = {};
+  let dataItems = {
+    items : null
+  };
 
 
   try {
@@ -52,6 +64,8 @@ export const getServerSideProps:GetServerSideProps = async ({query}) => {
   } catch (error) {
       console.log(error);
   }  
+
+  console.log(dataItems);
 
   return {
     props: { 

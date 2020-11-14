@@ -8,11 +8,16 @@ import ErrorPage from '../../components/ErrorPage'
 import Loading from '../../components/Loader'
 import { GetServerSideProps,InferGetServerSidePropsType } from 'next'
 
-
 const Item = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
 
 
-  const { item: { item }, categories: { category: { path_from_root }} } = props;
+  const { category } = props.categories || {};
+  const { path_from_root } = category || {};
+
+  const { item } = props.item || {};
+
+  const { errorItem, errorCategories } = props;
+
   const [loading, setLoading] = useState(true);
   const context = useItem();
   const { setItem, setCategories } = context;
@@ -20,7 +25,15 @@ const Item = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
 
   useEffect(() => {
     
-    if (item) { setLoading(false); setItem(item); setCategories(path_from_root); }
+    if (item && Object.keys(item).length > 0) { 
+      setLoading(false); 
+      setItem(item); 
+      setCategories(path_from_root); 
+    }
+
+    if (errorItem || errorCategories) {
+      setLoading(false);
+    }
 
   }, [item])
 
@@ -36,8 +49,8 @@ const Item = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
     <>
       
           <Helmet>
-            <title>Mercado Libre - {`${item && item.title?item.title:''}`}</title>
-            <meta name="description" content={`Item ${item && item.title?item.title:''}`} />
+            <title>Mercado Libre - {`${item && item.title?item.title:'No hay productos'}`}</title>
+            <meta name="description" content={`Item ${item && item.title?item.title:'No hay productos'}`} />
           </Helmet>
           <Layout categories={
               item && path_from_root?
@@ -46,6 +59,10 @@ const Item = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
                 []
 
           }>
+              <>
+                  {errorItem &&
+                    <ErrorPage message='No se encontro el producto solicitado' />
+                  }
 
                   {item && path_from_root &&
                  
@@ -58,7 +75,7 @@ const Item = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
                    
 
                   }
-
+                </>
           </Layout>
    </>
     
@@ -82,6 +99,9 @@ export const getServerSideProps:GetServerSideProps = async ({query}) => {
         }
       }
 
+      let errorItem = false;
+      let errorCategories = false;
+
       try {
 
           const resp1 = await fetch(`${process.env.BASE_URL}/api/items/${query.id}`);
@@ -91,15 +111,21 @@ export const getServerSideProps:GetServerSideProps = async ({query}) => {
           dataCategories = await resp2.json()
 
 
-
       } catch (error) {
           console.log(error);
       }  
 
+      if (dataItem === null) errorItem = true;
+      if (dataCategories === null) errorCategories = true;
+
+      console.log(dataItem);
+
   return {
     props: { 
       item: dataItem,
-      categories: dataCategories
+      categories: dataCategories,
+      errorItem: errorItem,
+      errorCategories: errorCategories
     }
   }
 }
