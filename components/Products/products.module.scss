@@ -75,6 +75,10 @@
             .products__details {
                 
                 width: 100%;
+                text-align: center;
+                @media only screen and (min-width: $desktop) {
+                    text-align: left;
+                }
                 
                 h2 {
                     font-weight: 400;
@@ -83,7 +87,14 @@
                 div {
                     display: flex;
                     flex-direction: row;
+                    text-align: center;
+                    justify-content: center;
 
+                    @media only screen and (min-width: $desktop) {
+                        text-align: left;
+                        justify-content: flex-start;
+                    }
+                    
                     h1 {
                         margin: 0 $smallSpace $space 0;
                         font-weight: 500;

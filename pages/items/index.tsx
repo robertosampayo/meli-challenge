@@ -46,10 +46,7 @@ export const getServerSideProps:GetServerSideProps = async ({query}) => {
   try {
 
       const resp = await fetch(`${process.env.BASE_URL}/api/items?q=${query.search}`);
-      dataItems = await resp.json()
-      
-
-      console.log(dataItems);
+      dataItems = await resp.json()   
 
 
   } catch (error) {

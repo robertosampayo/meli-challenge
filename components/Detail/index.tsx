@@ -33,7 +33,11 @@ const Detail: React.FC<DetailProps> = (item) => {
               <div className={styles.detail__container} >
                 <div className={styles.detail__product}>
                     {item.item.picture?
+                    <div className={styles.detail__product__img}>
+
                       <img src={item.item.picture}  />
+
+                    </div>
                       :
                       <ImageDefault />
                     }

@@ -33,8 +33,13 @@
         @media only screen and (min-width: $desktop) {
             grid-template-columns: 1fr 0.6fr;
             grid-template-rows: 1fr;
+            margin: 0 0 64px;
         }
-
+        @media only screen and (min-width: $bigScreen) {
+            grid-template-columns: 1fr 0.5fr;
+            grid-template-rows: 1fr;
+            margin: 0 0 64px;
+        }
 
         @media all and (device-width: 768px) and (device-height: 1024px) and (orientation:portrait) {
             grid-template-rows: 1.2fr 0.1fr;
@@ -51,23 +56,31 @@
             margin: 0 auto;
         }
 
-        img {
-            width: $imageSize;
-            height: auto;
-            align-self: center;
-            justify-self: center;
-
-            @media only screen and (min-width: $desktop) {
+        .detail__product__img {
+    
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            
+            img {
                 width: auto;
                 height: auto;
+                align-self: center;
+                justify-self: center;
+    
+                @media only screen and (min-width: $desktop) {
+                    width: 100%;
+                    height: auto;
+                }
+    
+                @media only screen and (min-width: $bigScreen) {
+                    width: auto;
+                    height: auto;
+                }
+            
             }
-
-            @media only screen and (min-width: $bigScreen) {
-                width: auto;
-                height: auto;
-            }
-        
         }
+
 
         .detail__product__text {
             @include flexCenter();
