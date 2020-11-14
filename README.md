@@ -45,6 +45,7 @@ Para el *servidor* se utilizo API Routes que brinda una solucion elegante para l
   * API Routes (NextJs)  🤞
   * Node 🤷‍♂️
   * Graphql + Apollo 🐱‍🚀
+  * SSR 🚅
   
 * Testing
   * Jest 👍
