@@ -72,10 +72,10 @@ npm run test
 
 Puedes ver la aplicacion funcionando en produccion mediante este link: [MeliApp](https://meli-challenge.vercel.app/) .
 Puedes ver ejemplo de consumo de los endpints aqui:
- * [Detalle de producto](https://meli-challenge.vercel.app/api/items/MLA775860909)
+ * [Detalle de un producto](https://meli-challenge.vercel.app/api/items/MLA775860909)
  * [Busqueda de producto](https://meli-challenge.vercel.app/api/items?q=iphone)
- puedes incluso buscar una categoria, porque porque no?
- * [Alguna categoria](https://meli-challenge.vercel.app/api/categories/MLA109042)
+ 
+ * Puedes incluso buscar una categoria, porque porque no? [Alguna categoria](https://meli-challenge.vercel.app/api/categories/MLA109042)
  
  
 Gracias por haber llegado hasta aca 🙏🏼 Happy Coding, Happy Life!
