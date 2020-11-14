@@ -26,7 +26,7 @@
 
     .detail__product {
         display: grid;
-        grid-template-rows: 0.1fr 0.8fr;     
+        grid-template-rows: 0.1fr 0.5fr;     
         grid-template-columns: 1fr;   
         gap: $smallSpace;
 
@@ -63,7 +63,7 @@
             align-content: center;
             
             img {
-                width: auto;
+                width: 100%;
                 height: auto;
                 align-self: center;
                 justify-self: center;
