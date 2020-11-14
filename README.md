@@ -40,7 +40,7 @@ Para el *cliente* de la aplicacion se utilizo React junto con Nextjs el cual cub
   * Context API
   * React Helmet (SEO) 😉
 
-Para el *servidor* se utilizo API Routes que brinda una solucion elegante para la construccion de una API, este nos permite manejar los distintos endpoints solicitados dentro de la aplicacion, ademas se utilizo *graphql* para la manipulacion de la API haciendo conexion entre el API de MeLi y nuestro servidor
+Para el *servidor* se utilizo API Routes que brinda una solucion elegante para la construccion de APIs, este nos permite manejar los distintos endpoints solicitados dentro de la aplicacion, ademas se utilizo *graphql* para la manipulacion de la API sirviendo de puente desde MeLi hasta nuestro servidor y por ultimo se hizo uso de SSR para cargar el contenido del sitio desde el servidor, este a su vez gracias a NextJs cuenta con un listener en cada request.
 
 * Servidor
   * API Routes (NextJs)  🤞
@@ -71,6 +71,13 @@ npm run test
 ## Deploy 😎 🚀
 
 Puedes ver la aplicacion funcionando en produccion mediante este link: [MeliApp](https://meli-challenge.vercel.app/) .
+Puedes ver ejemplo de consumo de los endpints aqui:
+ * [Detalle de producto](https://meli-challenge.vercel.app/api/items/MLA775860909)
+ * [Busqueda de producto](https://meli-challenge.vercel.app/api/items?q=iphone)
+ puedes incluso buscar una categoria, porque porque no?
+ * [Alguna categoria](https://meli-challenge.vercel.app/api/categories/MLA109042)
+ 
+ 
 Gracias por haber llegado hasta aca 🙏🏼 Happy Coding, Happy Life!
 
 A Great character once said:
