@@ -37,7 +37,7 @@ Para el *cliente* de la aplicacion se utilizo React junto con Nextjs el cual cub
   * React 💕
   * Typesctipt 🌹
   * SASS ✨
-  * Context API
+  * Context API 🏍
   * React Helmet (SEO) 😉
 
 Para el *servidor* se utilizo API Routes que brinda una solucion elegante para la construccion de APIs, este nos permite manejar los distintos endpoints solicitados dentro de la aplicacion, ademas se utilizo *graphql* para la manipulacion de la API sirviendo de puente desde MeLi hasta nuestro servidor y por ultimo se hizo uso de SSR para cargar el contenido del sitio desde el servidor, este a su vez gracias a NextJs cuenta con un listener en cada request.
@@ -82,3 +82,11 @@ Gracias por haber llegado hasta aca 🙏🏼 Happy Coding, Happy Life!
 
 A Great character once said:
 > It's not who you are underneath, but what you do that defines you
+
+PD: Para este proyecto decidi no usar Express, pero les comparto un ejemplo donde si lo use haciendo conexion con MongoDB:
+```bash
+ [Repo Cliente](https://github.com/robertosampayo/mearn-tasks)
+ [Repo Servidor](https://github.com/robertosampayo/mearn-task-servidor)
+ [Link] (https://angry-williams-68c23c.netlify.app/)
+
+```
