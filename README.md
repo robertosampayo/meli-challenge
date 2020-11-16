@@ -83,10 +83,16 @@ Gracias por haber llegado hasta aca 🙏🏼 Happy Coding, Happy Life!
 A Great character once said:
 > It's not who you are underneath, but what you do that defines you
 
-PD: Para este proyecto decidi no usar Express, pero les comparto un ejemplo donde si lo use haciendo conexion con MongoDB:
-```bash
- [Repo Cliente](https://github.com/robertosampayo/mearn-tasks)
- [Repo Servidor](https://github.com/robertosampayo/mearn-task-servidor)
- [Link] (https://angry-williams-68c23c.netlify.app/)
 
-```
+
+
+
+
+
+
+PD: Para este proyecto decidi no usar Express, pero les comparto un ejemplo donde si lo use haciendo conexion con MongoDB:
+ *[Repo Cliente](https://github.com/robertosampayo/mearn-tasks)
+ *[Repo Servidor](https://github.com/robertosampayo/mearn-task-servidor)
+ *[Link] (https://angry-williams-68c23c.netlify.app/)
+
+
