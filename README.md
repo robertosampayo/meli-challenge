@@ -94,6 +94,6 @@ PD: Para este proyecto decidi no usar Express, pero les comparto un ejemplo dond
 
 * [Repo Cliente](https://github.com/robertosampayo/mearn-tasks)
 * [Repo Servidor](https://github.com/robertosampayo/mearn-task-servidor)
-* [Link] (https://angry-williams-68c23c.netlify.app/)
+* [Link](https://angry-williams-68c23c.netlify.app/)
 
 
